@@ -19,8 +19,8 @@ namespace HomeworkTemplate
                 int placesAmount = task.DefibliratorStorages.Length;
                 UserLongitude = UserLongitude.Replace(',', '.');
                 UserLatitude = UserLatitude.Replace(',', '.');
-                if (!double.TryParse(UserLongitude, out double longitudeFloatUser)
-                        || !double.TryParse(UserLatitude, out double latitudeFloatUser))
+                if (!double.TryParse(UserLongitude, out double longitudeDoubleUser)
+                        || !double.TryParse(UserLatitude, out double latitudeDoubleUser))
                 {
                     return "Wrong data";
                 }
@@ -35,13 +35,13 @@ namespace HomeworkTemplate
                     string longitudeString = parseInformation[longitudeIndex];
                     longitudeString = longitudeString.Replace(',', '.');
                     latitideString = latitideString.Replace(',', '.');
-                    if (!double.TryParse(latitideString, out double latitideFloat)
-                        || !double.TryParse(longitudeString, out double longitudeFloat))
+                    if (!double.TryParse(latitideString, out double latitideDouble)
+                        || !double.TryParse(longitudeString, out double longitudeDouble))
                     {
                         return "Wrong data";
                     }
-                    double x = (longitudeFloat - longitudeFloatUser) * Math.Cos((latitudeFloatUser + latitideFloat)/2);
-                    double y = (latitideFloat - latitudeFloatUser);
+                    double x = (longitudeDouble - longitudeDoubleUser) * Math.Cos((latitudeDoubleUser + latitideDouble)/2);
+                    double y = (latitideDouble - latitudeDoubleUser);
                     double d = Math.Sqrt(x * x + y * y) * radiusInKm;
                     if (d < nearest)
                     {
